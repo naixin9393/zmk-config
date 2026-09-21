@@ -1,0 +1,26 @@
+#include "dac_man_5x6.dtsi"
+
+/* The dongle has no keys; it is the split central (USB to the host).
+ * Disable all status LEDs to stop BLE blinking. */
+&blue_led {
+    status = "disabled";
+};
+
+/ {
+    leds {
+        status = "disabled";
+    };
+};
+
+/ {
+    chosen {
+        zmk,kscan = &mock_kscan;
+    };
+
+    mock_kscan: mock_kscan_0 {
+        compatible = "zmk,kscan-mock";
+        columns = <0>;
+        rows = <0>;
+        events = <0>;
+    };
+};

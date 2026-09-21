@@ -1,0 +1,18 @@
+// See https://zmk.dev/docs/development/hardware-integration/physical-layouts
+// for how to configure this.
+
+#include <physical_layouts.dtsi>
+
+/ {
+    default_layout: default_layout {
+        compatible = "zmk,physical-layout";
+        display-name = "Default Layout";
+        transform = <&default_transform>;
+
+        // The `kscan` property is intentionally omitted so the layout uses the
+        // `chosen` zmk,kscan (mock on the dongle, kscan0 on each half).
+        //
+        // Physical key positions are optional. To enable ZMK Studio, add one
+        // <&key_physical_attrs ...> entry here per transform map entry (64).
+    };
+};

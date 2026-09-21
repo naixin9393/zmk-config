@@ -18,3 +18,14 @@
 #     artifact-name: corne_left_with_studio
 #
 ---
+include:
+  - board: nice_nano//zmk
+    shield: dac_man_5x6_dongle
+  - board: nice_nano//zmk
+    shield: dac_man_5x6_left
+    cmake-args: -DCONFIG_ZMK_SPLIT=y -DCONFIG_ZMK_SPLIT_ROLE_CENTRAL=n
+  - board: nice_nano//zmk
+    shield: dac_man_5x6_right
+    cmake-args: -DCONFIG_ZMK_SPLIT=y -DCONFIG_ZMK_SPLIT_ROLE_CENTRAL=n
+  - board: nice_nano//zmk
+    shield: settings_reset

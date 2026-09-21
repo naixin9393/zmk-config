@@ -1,0 +1,39 @@
+if SHIELD_DAC_MAN_5X6_LEFT
+
+config ZMK_KEYBOARD_NAME
+    default "dac-man-5x6"
+
+config ZMK_SPLIT_ROLE_CENTRAL
+    default y
+
+endif # SHIELD_DAC_MAN_5X6_LEFT
+
+if SHIELD_DAC_MAN_5X6_LEFT || SHIELD_DAC_MAN_5X6_RIGHT
+
+config ZMK_SPLIT
+    default y
+
+endif # SHIELD_DAC_MAN_5X6_LEFT || SHIELD_DAC_MAN_5X6_RIGHT
+
+if SHIELD_DAC_MAN_5X6_DONGLE
+
+config ZMK_KEYBOARD_NAME
+    default "dac-man-5x6"
+
+config ZMK_SPLIT
+    default y
+
+config ZMK_SPLIT_ROLE_CENTRAL
+    default y
+
+config ZMK_SPLIT_BLE_CENTRAL_PERIPHERALS
+    default 2
+
+# 2 split peripherals + 1 host BT profile
+config BT_MAX_CONN
+    default 3
+
+config BT_MAX_PAIRED
+    default 3
+
+endif # SHIELD_DAC_MAN_5X6_DONGLE
