@@ -1,5 +1,11 @@
 #include "dac_man_5x6.dtsi"
 
+/* Clone nice!nano v2s draw more current with VDDH DC/DC enabled (ZMK #2990).
+ * Force the VDDH regulator into LDO mode. */
+&reg0 {
+    status = "disabled";
+};
+
 / {
     chosen {
         zmk,kscan = &kscan0;

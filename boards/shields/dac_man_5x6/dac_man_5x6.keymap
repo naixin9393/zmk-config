@@ -27,7 +27,7 @@
 &trans  &kp PSCRN  &trans  &trans
 &kp KP_N0  &trans  &trans  &trans
 &trans  &trans  &trans  &trans
-&trans  &trans  &trans  &trans
+&trans  &trans  &bootloader  &trans
             >;
         };
 
@@ -40,7 +40,7 @@
 &trans  &trans  &kp EQUAL  &trans
 &trans  &trans  &trans  &trans
 &trans  &trans  &trans  &trans
-&trans  &trans  &bootloader  &trans
+&trans  &bootloader  &trans  &trans
             >;
         };
     };

@@ -1,5 +1,11 @@
 #include "dac_man_5x6.dtsi"
 
+/* Clone nice!nano v2s draw more current with VDDH DC/DC enabled (ZMK #2990).
+ * Force the VDDH regulator into LDO mode. */
+&reg0 {
+    status = "disabled";
+};
+
 /* Right half local columns 0..5 land in transform columns 6..11. */
 &default_transform {
     col-offset = <6>;
