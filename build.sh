@@ -48,6 +48,16 @@ if [ ! -d "${WORKSPACE}/.git" ]; then
     https://github.com/zmkfirmware/zmk "${WORKSPACE}"
 fi
 
+# Extra ZMK module: reports split battery levels over a second USB HID
+# interface (HID_1) so the dongle can expose them over USB without logging.
+MODULE_DIR="${WORKSPACE}/zmk-usb-reporting"
+if [ ! -d "${MODULE_DIR}/.git" ]; then
+  echo ">> cloning zmk-usb-reporting into ${MODULE_DIR}"
+  git clone --depth 1 https://github.com/amazingbeetleking/zmk-usb-reporting "${MODULE_DIR}"
+else
+  git -C "${MODULE_DIR}" pull --ff-only >/dev/null 2>&1 || true
+fi
+
 script=""
 for t in "${targets[@]}"; do
   snippet=""
@@ -62,7 +72,7 @@ for t in "${targets[@]}"; do
   [ -n "${snippet}" ] && snippet_arg="-S ${snippet}"
   script+="echo '>> build ${t} (${shield})'
 "
-  script+="west build -p -d /workspace/build/${t} -b '${BOARD}' ${snippet_arg} -- -DSHIELD=${shield} -DZMK_CONFIG=/myconfig/config -DZMK_EXTRA_MODULES=/myconfig ${extra}
+  script+="west build -p -d /workspace/build/${t} -b '${BOARD}' ${snippet_arg} -- -DSHIELD=${shield} -DZMK_CONFIG=/myconfig/config -DZMK_EXTRA_MODULES='/myconfig;/workspace/zmk-usb-reporting' ${extra}
 "
 done
 
